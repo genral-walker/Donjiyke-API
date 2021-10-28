@@ -10,28 +10,77 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function register(Request $request) {
+
+    public function index()
+    {
+        return User::all();
+    }
+    /*
+     $newImageName = time().'-'.$request->name . '.'.$request->image->extension();
+
+        $request->image->move(public_path('images'), $newImageName);
+
+        // In creating a user //'image_path' => $newImageName,
+    */
+
+    public function login(Request $request)
+    {
         $fields = $request->validate([
-            // 'name' => 'string|nullable',
-            // 'image' => 'image|nullable|max: 1999',
-            'role' => 'required|string',
-            // 'mobile' => 'integer|size:11|nullable',
+            'email' => 'required|string',
+            'password' => 'required|string'
+        ]);
+
+        // Check email
+        $user = User::where('email', $fields['email'])->first();
+
+        if (!$user || !Hash::check($fields['password'], $user->password)) {
+            return response([
+                'message' => 'Invalid email or password.'
+            ], 401);
+        }
+
+        $token = $user->createToken('myapptoken')->plainTextToken;
+
+        $response = [
+            'user' => $user,
+            'token' => $token
+        ];
+
+        return response($response, 201);
+    }
+
+
+
+    public function logout(Request $request)
+    {
+        auth()->user()->tokens()->delete();
+
+        return [
+            'message' => 'Logged out'
+        ];
+    }
+
+
+    public function create(Request $request)
+    {
+        $fields = $request->validate([
             'email' => 'required|string|unique:users,email',
             'password' => 'required|string'
         ]);
-      
+
+        if (User::count() >= 5) {
+            return response([
+                'message' => 'Maximum number of users reached.'
+            ], 403);
+        }
+
+
         $user = User::create([
-            'role' => $fields['role'],
+            'role' => 'staff',
             'email' => $fields['email'],
             'password' => bcrypt($fields['password'])
         ]);
 
-        // $token = $user->createToken('myapptoken')->plainTextToken;
-
-        // $response = [
-        //     'user' => $user,
-        //     'token' => $token
-        // ];
 
         $response = [
             'user' => $user
@@ -40,45 +89,18 @@ class AuthController extends Controller
         return response($response, 201);
     }
 
-    /*
-     $newImageName = time().'-'.$request->name . '.'.$request->image->extension();
 
-        $request->image->move(public_path('images'), $newImageName);
 
-        // In creating a user //'image_path' => $newImageName,
-    */ 
+    public function update(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->update($request->all());
+        return $user;
+    }
 
-    // public function login(Request $request) {
-    //     $fields = $request->validate([
-    //         'email' => 'required|string',
-    //         'password' => 'required|string'
-    //     ]);
 
-    //     // Check email
-    //     $user = User::where('email', $fields['email'])->first();
-
-    //     // Check password
-    //     if(!$user || !Hash::check($fields['password'], $user->password)) {
-    //         return response([
-    //             'message' => 'Bad creds'
-    //         ], 401);
-    //     }
-
-    //     $token = $user->createToken('myapptoken')->plainTextToken;
-
-    //     $response = [
-    //         'user' => $user,
-    //         'token' => $token
-    //     ];
-
-    //     return response($response, 201);
-    // }
-
-    // public function logout(Request $request) {
-    //     auth()->user()->tokens()->delete();
-
-    //     return [
-    //         'message' => 'Logged out'
-    //     ];
-    // }
+    public function destroy($id)
+    {
+        return User::destroy($id);
+    }
 }

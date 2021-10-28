@@ -17,16 +17,33 @@ use Illuminate\Support\Facades\Route;
 
 
 // Thus should be in a private route.
-Route::post('/register', [AuthController::class, 'register']);
+
+// puplic routes
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::patch('/users/{id}', [AuthController::class, 'update']);
 
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
+
+    // Only Admin
+    Route::get('/users', [AuthController::class, 'index']);
+    Route::post('/create', [AuthController::class, 'create']);
+    Route::delete('/users/{id}', [AuthController::class, 'destroy']);
+    
+
+    // Every User Functions
+    Route::post('/logout', [AuthController::class, 'logout']);
+    
+
     // Route::post('/products', [ProductController::class, 'store']);
     // Route::put('/products/{id}', [ProductController::class, 'update']);
     // Route::delete('/products/{id}', [ProductController::class, 'destroy']);
-    // Route::post('/logout', [AuthController::class, 'logout']);
+   
 
     // Route::apiResource('auth', AuthController::class);
-  
+    // Route::resource('auth', AuthController::class);
+
 });
 
+Route::resource('auth', AuthController::class);
