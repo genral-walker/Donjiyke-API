@@ -95,6 +95,11 @@ class AuthController extends Controller
     {
         $user = User::find($id);
         $user->update($request->all());
+
+        if ($request->has('password')) {
+            $user->update(['password' => bcrypt($request->input('password'))]);
+        }
+
         return $user;
     }
 
@@ -156,5 +161,4 @@ class AuthController extends Controller
     }
 
     */
-
 }
