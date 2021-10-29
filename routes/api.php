@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 // puplic routes
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::patch('/users/{id}', [AuthController::class, 'update']);
+Route::post('/recover', [AuthController::class, 'mail']);
 
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // Every User Functions
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::patch('/users/{id}', [AuthController::class, 'update']);
     
 
     // Route::post('/products', [ProductController::class, 'store']);
@@ -46,4 +47,3 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 });
 
-Route::resource('auth', AuthController::class);

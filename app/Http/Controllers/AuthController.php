@@ -103,4 +103,58 @@ class AuthController extends Controller
     {
         return User::destroy($id);
     }
+
+
+    /*
+    public function mail(Request $request)
+    {
+        $fields = $request->validate([
+            'email' => 'required|string'
+        ]);
+
+
+        // Check email
+        $user = User::where('email', $fields['email'])->first();
+
+        if (!$user) {
+            return response([
+                'message' => 'User does not exist!'
+            ], 401);
+        }
+
+        $to      = $fields['email'];
+        $subject = 'Password Recovery Mail';
+        $message = '
+          <div>
+              <h2>Here Is your Password</h2>
+              <br/>
+              <ul style="font-size: 1.17em;">
+                  <li><span>Name: </span><span>' . $_POST['name'] . '</span></li>
+                  <li><span>Email: </span><span>' . $_POST['email'] . '</span></li>
+                  <li><span>Subject: </span><span>' . $_POST['subject'] . '</span></li>
+              </ul>
+
+              <p>
+             ' . $user->password . '
+              </P>
+          </div>
+      ';
+
+        $headers =  'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'From: Don Jiyke Inventory/Sales' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+
+        if (mail($to, $subject, $message, $headers)) {
+            return response([
+                'message' => 'Email sent'
+            ], 200);
+        } else {
+            return response([
+                'message' => 'Email not sent'
+            ], 408);
+        }
+    }
+
+    */
+
 }
