@@ -19,13 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
-// Thus should be in a private route.
-
 // puplic routes
 Route::post('/login', [AuthController::class, 'login']);
-
-Route::patch('/users/{id}', [AuthController::class, 'update']);
 
 // Route::post('/recover', [AuthController::class, 'mail']);
 
@@ -35,11 +30,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/users', [AuthController::class, 'index']);
     Route::post('/create', [AuthController::class, 'create']);
     Route::delete('/users/{id}', [AuthController::class, 'destroy']);
-    
+
 
     // Every User Functions
+    Route::patch('/users/{id}', [AuthController::class, 'update']);
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::apiResource('stocks', StockController::class);
-
+    Route::apiResource('/stocks', StockController::class);
 });
-
