@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sale extends Model
+class Ledger extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'target_roll',
-        'metre_run',
-        'metre_out',
+        'material',   
+        'meter',
+        'payment',
         'balance',
-        'issuer',
-        'issued_to'
+        'cost'
     ];
 
     protected $casts = [

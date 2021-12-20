@@ -14,7 +14,7 @@ class SaleController extends Controller
      */
     public function index()
     {
-        return Sale::all();
+        return Sale::all();                     // json(['result'=>'success','created_at'=>$message],200)
     }
 
     /**
@@ -26,20 +26,22 @@ class SaleController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
-            'material' => 'required|string',
-            'meter' => 'required|string',
-            'payment' => 'required|string',
-            'cost' => 'required|string',
-            'balance' => 'required|string'
+            'target_roll' => 'required|string',
+            'metre_run' => 'required|string',
+            'metre_out' => 'required|string',
+            'balance' => 'required|string',
+            'issuer' =>  'required|string',
+            'issued_to' => 'required|string'
 
         ]);
 
         $sale = Sale::create([
-            'material' => $fields['material'],
-            'meter' => $fields['meter'],
-            'payment' => $fields['payment'],
-            'cost' => $fields['cost'],
-            'balance' => $fields['balance']
+            'target_roll' => $fields['target_roll'],
+            'metre_run' => $fields['metre_run'],
+            'metre_out' => $fields['metre_out'],
+            'balance' => $fields['balance'],
+            'issuer' =>  $fields['issuer'],
+            'issued_to' => $fields['issued_to']
         ]);
 
         return response($sale, 201);

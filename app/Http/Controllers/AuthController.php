@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 
 
-class AuthController extends Controller
+class AuthController extends Controller       
 {
 
     public function index()
@@ -38,9 +38,9 @@ class AuthController extends Controller
                 'message' => 'Invalid email or password.'
             ], 401);
         }
-
+  
         $token = $user->createToken('myapptoken')->plainTextToken;
-
+    
         $response = [
             'user' => $user,
             'token' => $token
