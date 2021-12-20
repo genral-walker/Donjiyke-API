@@ -50,10 +50,10 @@ class StockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $stock = Stock::find($id);
+        $stock->update($request->all());
+        return $stock;
     }
-
-   
 }
 
 
