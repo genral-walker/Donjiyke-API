@@ -15,10 +15,11 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->string('material');
-            $table->string('meter');
-            $table->string('payment');
-            $table->string('cost');
+            $table->string('target_roll');
+            $table->string('metre_run');
+            $table->string('metre_out');
+            $table->string('issuer');
+            $table->string('issued_to');
             $table->string('balance');
             $table->timestamps();
         });

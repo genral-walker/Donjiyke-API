@@ -5,6 +5,7 @@ use App\Http\Controllers\SaleController;
 use App\Http\Controllers\StockController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LedgerController
 
 
 /*
@@ -18,14 +19,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 // puplic routes
-Route::post('/login', [AuthController::class, 'login']);
-
-// Route::post('/recover', [AuthController::class, 'mail']);
-
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::post('/login', [AuthController::class, 'login'])
+  
+   
+Route::group(['middleware' => ['auth:sanctum']], function () {   
 
     // Only Admin
     Route::get('/users', [AuthController::class, 'index']);
@@ -38,4 +36,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::apiResource('/stocks', StockController::class);
     Route::apiResource('/sales', SaleController::class);
+    Route::apiResource('/ledgers', LedgerController::class);
 });

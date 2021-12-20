@@ -17,10 +17,6 @@ class CreateStocksTable extends Migration
             $table->id();
             $table->string('kg');
             $table->string('metre_run');
-            $table->string('metre_out');
-            $table->string('issued_by');
-            $table->longText('issued_to');
-            $table->string('cost');
             $table->string('balance');
             $table->timestamps();
         });

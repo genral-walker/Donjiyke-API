@@ -12,10 +12,11 @@ class Stock extends Model
     protected $fillable = [
         'kg',
         'metre_run',
-        'metre_out',
-        'issued_by',
-        'issued_to',
-        'cost',
         'balance'
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime:d/m/Y H:i',  
+        'updated_at' => 'datetime:d/m/Y H:i'
     ];
 }

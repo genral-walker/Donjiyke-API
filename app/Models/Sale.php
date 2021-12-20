@@ -10,10 +10,16 @@ class Sale extends Model
     use HasFactory;
 
     protected $fillable = [
-        'material',
-        'meter',
-        'payment',
-        'cost',
-        'balance'
+        'target_roll',
+        'metre_run',
+        'metre_out',
+        'balance',
+        'issuer',
+        'issued_to'
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime:d/m/Y H:i',  
+        'updated_at' => 'datetime:d/m/Y H:i'
     ];
 }
