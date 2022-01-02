@@ -12,7 +12,9 @@ class Stock extends Model
     protected $fillable = [
         'kg',
         'metre_run',
-        'balance'
+        'balance',
+        'colour',
+        'description'
     ];
 
     protected $casts = [

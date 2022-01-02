@@ -81,12 +81,7 @@ class AuthController extends Controller
             'password' => bcrypt($fields['password'])     
         ]);
 
-
-        $response = [
-            'user' => $user
-        ];
-
-        return response($response, 201);
+        return response($user, 201);
     }
 
 

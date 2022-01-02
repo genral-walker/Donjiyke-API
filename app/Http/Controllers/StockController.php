@@ -28,12 +28,16 @@ class StockController extends Controller
         $fields = $request->validate([
             'kg' => 'required|string',
             'metre_run' => 'required|string',
+            'colour' => 'required|string',
+            'description' => 'required|string',
             'balance' => 'required|string'
         ]);
 
         $stock = Stock::create([
             'kg' => $fields['kg'],
             'metre_run' => $fields['metre_run'],
+            'colour' => $fields['colour'],
+            'description' => $fields['description'],
             'balance' => $fields['balance']
         ]);
 
