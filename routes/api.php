@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LedgerController;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\StockController;
 use Illuminate\Http\Request;
@@ -40,4 +41,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('/stocks', StockController::class);
     Route::apiResource('/sales', SaleController::class);
     Route::apiResource('/ledgers', LedgerController::class);
+    Route::apiResource('/payments', PaymentsController::class);
 });
