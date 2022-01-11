@@ -13,4 +13,9 @@ class Payments extends Model
         'target_ledger', 
         'payment'
     ];
+
+    protected $casts = [
+        'created_at' => 'datetime:d/m/Y h:i a',  
+        'updated_at' => 'datetime:d/m/Y h:i a'
+    ];
 }

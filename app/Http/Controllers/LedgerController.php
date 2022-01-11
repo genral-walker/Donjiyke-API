@@ -42,4 +42,11 @@ class LedgerController extends Controller
 
         return response($ledger, 201);
     }
+
+    public function update(Request $request, $id)
+    {
+        $ledger = Ledger::find($id);
+        $ledger->update($request->all());
+        return $ledger;
+    }
 }
