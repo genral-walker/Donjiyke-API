@@ -5,17 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Stock extends Model
+class Payments extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'date_in',
-        'kg',
-        'metre_run',
-        'balance',
-        'colour',
-        'description'
+        'target_ledger', 
+        'payment',
+        'date'
     ];
 
     protected $casts = [

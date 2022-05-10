@@ -13,13 +13,14 @@ class Sale extends Model
         'target_roll',
         'metre_run',
         'metre_out',
+        'date_out',
         'balance',
         'issuer',
         'issued_to'
     ];
 
     protected $casts = [
-        'created_at' => 'datetime:d/m/Y H:i',  
-        'updated_at' => 'datetime:d/m/Y H:i'
+        'created_at' => 'datetime:d/m/Y h:i a',  
+        'updated_at' => 'datetime:d/m/Y h:i a'
     ];
 }

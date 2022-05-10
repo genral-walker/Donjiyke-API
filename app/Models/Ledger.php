@@ -10,6 +10,8 @@ class Ledger extends Model
     use HasFactory;
 
     protected $fillable = [
+        'date',
+        'client',
         'material',   
         'meter',
         'payment',
@@ -18,7 +20,7 @@ class Ledger extends Model
     ];
 
     protected $casts = [
-        'created_at' => 'datetime:d/m/Y H:i',  
-        'updated_at' => 'datetime:d/m/Y H:i'
+        'created_at' => 'datetime:d/m/Y h:i a',  
+        'updated_at' => 'datetime:d/m/Y h:i a'
     ];
 }

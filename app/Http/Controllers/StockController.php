@@ -26,14 +26,20 @@ class StockController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
+            'date_in' => 'required|string',
             'kg' => 'required|string',
             'metre_run' => 'required|string',
+            'colour' => 'required|string',
+            'description' => 'required|string',
             'balance' => 'required|string'
         ]);
 
         $stock = Stock::create([
+            'date_in' => $fields['date_in'],
             'kg' => $fields['kg'],
             'metre_run' => $fields['metre_run'],
+            'colour' => $fields['colour'],
+            'description' => $fields['description'],
             'balance' => $fields['balance']
         ]);
 
@@ -50,10 +56,10 @@ class StockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $stock = Stock::find($id);
+        $stock->update($request->all());
+        return $stock;
     }
-
-   
 }
 
 

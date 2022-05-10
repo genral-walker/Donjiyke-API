@@ -1,4 +1,4 @@
-# Todos
+<!-- # Todos
 
 - work on password recovery,
-- work on image upload.
+- work on image upload. -->

@@ -78,15 +78,10 @@ class AuthController extends Controller
         $user = User::create([
             'role' => 'staff',
             'email' => $fields['email'],
-            'password' => bcrypt($fields['password'])
+            'password' => bcrypt($fields['password'])     
         ]);
 
-
-        $response = [
-            'user' => $user
-        ];
-
-        return response($response, 201);
+        return response($user, 201);
     }
 
 

@@ -29,6 +29,7 @@ class SaleController extends Controller
             'target_roll' => 'required|string',
             'metre_run' => 'required|string',
             'metre_out' => 'required|string',
+            'date_out' => 'required|string',
             'balance' => 'required|string',
             'issuer' =>  'required|string',
             'issued_to' => 'required|string'
@@ -39,6 +40,7 @@ class SaleController extends Controller
             'target_roll' => $fields['target_roll'],
             'metre_run' => $fields['metre_run'],
             'metre_out' => $fields['metre_out'],
+            'date_out' => $fields['date_out'],
             'balance' => $fields['balance'],
             'issuer' =>  $fields['issuer'],
             'issued_to' => $fields['issued_to']
