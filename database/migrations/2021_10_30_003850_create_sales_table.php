@@ -18,6 +18,7 @@ class CreateSalesTable extends Migration
             $table->string('target_roll');
             $table->string('metre_run');
             $table->string('metre_out');
+            $table->string('date_out');
             $table->string('issuer');
             $table->string('issued_to');
             $table->string('balance');

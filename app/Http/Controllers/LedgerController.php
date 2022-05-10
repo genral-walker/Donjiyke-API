@@ -24,6 +24,7 @@ class LedgerController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
+            'date' => 'required|string',
             'client' => 'required|string',
             'material' => 'required|string',
             'meter' => 'required|string',
@@ -34,6 +35,7 @@ class LedgerController extends Controller
         ]);
 
         $ledger = Ledger::create([
+            'date' => $fields['date'],
             'client' => $fields['client'],
             'material' => $fields['material'],
             'meter' => $fields['meter'],

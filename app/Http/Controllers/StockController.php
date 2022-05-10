@@ -26,6 +26,7 @@ class StockController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
+            'date_in' => 'required|string',
             'kg' => 'required|string',
             'metre_run' => 'required|string',
             'colour' => 'required|string',
@@ -34,6 +35,7 @@ class StockController extends Controller
         ]);
 
         $stock = Stock::create([
+            'date_in' => $fields['date_in'],
             'kg' => $fields['kg'],
             'metre_run' => $fields['metre_run'],
             'colour' => $fields['colour'],

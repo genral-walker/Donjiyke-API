@@ -31,12 +31,14 @@ class PaymentsController extends Controller
         $fields = $request->validate([
             'target_ledger' => 'required|string',
             'payment' => 'required|string',
+            'date' => 'required|string',
 
         ]);
 
         $payment = Payments::create([
             'target_ledger' => $fields['target_ledger'],
             'payment' => $fields['payment'],
+            'date' => $fields['date'],
         ]);
 
         return response($payment, 201);         

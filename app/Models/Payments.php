@@ -11,7 +11,8 @@ class Payments extends Model
 
     protected $fillable = [
         'target_ledger', 
-        'payment'
+        'payment',
+        'date'
     ];
 
     protected $casts = [

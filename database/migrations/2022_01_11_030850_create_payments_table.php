@@ -17,6 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->string('target_ledger');
             $table->string('payment');
+            $table->string('date');
             $table->timestamps();
         });
     }

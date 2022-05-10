@@ -13,6 +13,7 @@ class Sale extends Model
         'target_roll',
         'metre_run',
         'metre_out',
+        'date_out',
         'balance',
         'issuer',
         'issued_to'
